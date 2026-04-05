@@ -37,15 +37,15 @@ app.use(
 app.use(express.json({ limit: "1mb" }));
 app.use(morgan("dev"));
 
-app.get("/api/health", (req, res) => {
+app.get(["/api/health", "/health"], (req, res) => {
   res.status(200).json({
     status: "ok",
     database: mongoose.connection.readyState === 1 ? "connected" : "disconnected"
   });
 });
 
-app.use("/api/portfolio", portfolioRoutes);
-app.use("/api/messages", messageRoutes);
+app.use(["/api/portfolio", "/portfolio"], portfolioRoutes);
+app.use(["/api/messages", "/messages"], messageRoutes);
 
 app.use((req, res) => {
   res.status(404).json({

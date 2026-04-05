@@ -33,8 +33,26 @@ test("GET /api/health reports disconnected when MongoDB is unavailable", async (
   });
 });
 
+test("GET /health also works for Netlify function path routing", async () => {
+  const response = await request(app).get("/health");
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(response.body, {
+    status: "ok",
+    database: "disconnected"
+  });
+});
+
 test("GET /api/portfolio falls back to seed content when disconnected", async () => {
   const response = await request(app).get("/api/portfolio");
+
+  assert.equal(response.status, 200);
+  assert.equal(response.body.source, "seed");
+  assert.equal(response.body.data.hero.name, portfolioSeed.hero.name);
+});
+
+test("GET /portfolio falls back to seed content for function-mounted routing", async () => {
+  const response = await request(app).get("/portfolio");
 
   assert.equal(response.status, 200);
   assert.equal(response.body.source, "seed");
@@ -62,6 +80,17 @@ test("GET /api/portfolio returns database content when MongoDB is connected", as
 
 test("POST /api/messages validates required fields", async () => {
   const response = await request(app).post("/api/messages").send({
+    name: "",
+    email: "invalid",
+    message: ""
+  });
+
+  assert.equal(response.status, 400);
+  assert.equal(response.body.message, "Name, email, and message are required.");
+});
+
+test("POST /messages also validates required fields for function-mounted routing", async () => {
+  const response = await request(app).post("/messages").send({
     name: "",
     email: "invalid",
     message: ""
@@ -117,4 +146,3 @@ test("POST /api/messages saves a normalized message when MongoDB is connected", 
   assert.equal(response.body.data.budget, "2500");
   assert.equal(response.body.data.message, "Build my portfolio please.");
 });
-
