@@ -12,7 +12,7 @@ const fallbackPortfolio = {
       "I build fast, human-centered web experiences that blend product thinking, elegant interfaces, and practical engineering.",
     highlights: ["React", "Node.js", "MongoDB", "UI Systems"],
     ctaPrimary: "Explore Projects",
-    ctaSecondary: "Start a Conversation"
+    ctaSecondary: "Contact Me"
   },
   socials: [
     { label: "GitHub", url: "https://github.com/" },
@@ -483,7 +483,7 @@ function App() {
               </div>
             </article>
 
-            <ContactForm source={source} />
+            <ContactForm source={source} contactEmail={portfolio.contact?.email} />
           </div>
         </section>
       </main>
@@ -521,7 +521,7 @@ function SectionHeading({ eyebrow, title, description }) {
   );
 }
 
-function ContactForm({ source }) {
+function ContactForm({ source, contactEmail }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -646,8 +646,14 @@ function ContactForm({ source }) {
       <p className="form-helper">
         {source === "database"
           ? "Messages will be saved to MongoDB."
-          : "Connect MongoDB to persist incoming messages."}
+          : "Hosted without MongoDB? The direct contact email below will still work while you finish setup."}
       </p>
+
+      {contactEmail ? (
+        <p className="form-helper">
+          Prefer direct contact? <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        </p>
+      ) : null}
 
       {status.message ? (
         <p className={status.type === "success" ? "form-status success" : "form-status error"}>

@@ -10,7 +10,7 @@ const portfolioSeed = {
       "With a balance of frontend polish and backend discipline, I help teams ship websites and apps that look premium without losing maintainability.",
     highlights: ["React", "Node.js", "Express", "MongoDB", "Responsive UI"],
     ctaPrimary: "Explore Projects",
-    ctaSecondary: "Book a Call"
+    ctaSecondary: "Contact Me"
   },
   socials: [
     { label: "GitHub", url: "https://github.com/" },
@@ -145,4 +145,3 @@ const portfolioSeed = {
 };
 
 export default portfolioSeed;
-

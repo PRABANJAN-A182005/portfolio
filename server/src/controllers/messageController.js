@@ -1,9 +1,17 @@
-import mongoose from "mongoose";
+import { isDatabaseConnected } from "../config/db.js";
 import Message from "../models/Message.js";
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
 export async function createMessage(req, res, next) {
   try {
-    const { name, email, company, budget, message } = req.body;
+    const name = req.body.name?.trim() || "";
+    const email = req.body.email?.trim().toLowerCase() || "";
+    const company = req.body.company?.trim() || "";
+    const budget = req.body.budget?.trim() || "";
+    const message = req.body.message?.trim() || "";
 
     if (!name || !email || !message) {
       return res.status(400).json({
@@ -11,9 +19,16 @@ export async function createMessage(req, res, next) {
       });
     }
 
-    if (mongoose.connection.readyState !== 1) {
+    if (!isValidEmail(email)) {
+      return res.status(400).json({
+        message: "Please enter a valid email address."
+      });
+    }
+
+    if (!isDatabaseConnected()) {
       return res.status(503).json({
-        message: "MongoDB is not connected yet. Add MONGO_URI to store contact submissions."
+        message:
+          "The contact form is temporarily unavailable because MongoDB is not connected. Use the contact email shown on the page or add MONGO_URI in hosting."
       });
     }
 
@@ -33,4 +48,3 @@ export async function createMessage(req, res, next) {
     return next(error);
   }
 }
-

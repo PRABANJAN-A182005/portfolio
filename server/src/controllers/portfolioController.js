@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
+import { isDatabaseConnected } from "../config/db.js";
 import portfolioSeed from "../data/portfolio.seed.js";
 import Portfolio from "../models/Portfolio.js";
 
 export async function getPortfolio(req, res, next) {
   try {
-    if (mongoose.connection.readyState !== 1) {
+    if (!isDatabaseConnected()) {
       return res.status(200).json({
         source: "seed",
         message: "MongoDB is not connected yet. Showing starter portfolio content.",
@@ -33,7 +33,7 @@ export async function getPortfolio(req, res, next) {
 
 export async function upsertPortfolio(req, res, next) {
   try {
-    if (mongoose.connection.readyState !== 1) {
+    if (!isDatabaseConnected()) {
       return res.status(503).json({
         message: "MongoDB is not connected. Add MONGO_URI before updating portfolio content."
       });
@@ -55,4 +55,3 @@ export async function upsertPortfolio(req, res, next) {
     return next(error);
   }
 }
-
