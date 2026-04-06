@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .env
+text.txt
 .DS_Store
 coverage/
 client/dist/

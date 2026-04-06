@@ -4,7 +4,7 @@ const portfolioSeed = {
     role: "Frontend & MERN Developer",
     tagline:
       "I build responsive React interfaces and MERN applications with clean APIs, practical backend thinking, and user-focused frontend execution.",
-    location: "India",
+    location: "Chennai, Tamil Nadu, India",
     availability: "Open to frontend and full-stack developer roles",
     intro:
       "From blog platforms and attendance systems to event websites and API-powered apps, I enjoy turning ideas into web experiences that feel clear, fast, and dependable.",
@@ -139,7 +139,7 @@ const portfolioSeed = {
   contact: {
     email: "prabanjan.offical@gmail.com",
     phone: "+91 8072140893",
-    location: "India",
+    location: "Chennai, Tamil Nadu, India",
     note:
       "I am currently looking for frontend or full-stack developer opportunities, internships, and collaborative web projects. Reach out by email, phone, or LinkedIn.",
     calendly: "https://www.linkedin.com/in/prabanjan-a-1008b6346/"

@@ -416,14 +416,24 @@ img {
   color: var(--text-soft);
 }
 
-.profile-spotlight {
-  width: 5.25rem;
-  height: 5.25rem;
-  border-radius: 24px;
+.profile-photo-frame {
+  width: 6.8rem;
+  height: 8.3rem;
+  padding: 0.28rem;
+  border-radius: 28px;
   background:
-    linear-gradient(140deg, rgba(245, 158, 11, 0.2), rgba(15, 118, 110, 0.45)),
+    linear-gradient(150deg, rgba(245, 158, 11, 0.4), rgba(15, 118, 110, 0.65)),
     linear-gradient(180deg, var(--surface-strong), transparent);
+  box-shadow: 0 16px 32px rgba(16, 36, 34, 0.16);
   animation: drift 8s ease-in-out infinite;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 24px;
 }
 
 .stats-grid {
@@ -799,6 +809,11 @@ img {
 
   .hero-copy h1 {
     max-width: 100%;
+  }
+
+  .profile-photo-frame {
+    width: 5.7rem;
+    height: 7rem;
   }
 
   .timeline::before {

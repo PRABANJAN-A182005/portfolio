@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { usePortfolio } from "./hooks/usePortfolio";
+import profileImage from "./assets/prabanjan-profile.jpeg";
 
 const fallbackPortfolio = {
   hero: {
@@ -7,7 +8,7 @@ const fallbackPortfolio = {
     role: "Frontend & MERN Developer",
     tagline:
       "I build responsive React interfaces and MERN applications with clean APIs, practical backend thinking, and user-focused frontend execution.",
-    location: "India",
+    location: "Chennai, Tamil Nadu, India",
     availability: "Open to frontend and full-stack developer roles",
     intro:
       "From blog platforms and attendance systems to event websites and API-powered apps, I enjoy turning ideas into web experiences that feel clear, fast, and dependable.",
@@ -139,7 +140,7 @@ const fallbackPortfolio = {
   contact: {
     email: "prabanjan.offical@gmail.com",
     phone: "+91 8072140893",
-    location: "India",
+    location: "Chennai, Tamil Nadu, India",
     note:
       "I am currently looking for frontend or full-stack developer opportunities, internships, and collaborative web projects. Reach out by email, phone, or LinkedIn.",
     calendly: "https://www.linkedin.com/in/prabanjan-a-1008b6346/"
@@ -158,6 +159,7 @@ const navLinks = [
 function App() {
   const { data, source, message, isLoading, error } = usePortfolio();
   const portfolio = data || fallbackPortfolio;
+  const projectList = Array.isArray(portfolio.projects) ? portfolio.projects.filter(Boolean) : [];
   const contactLinkLabel = portfolio.contact?.calendly?.includes("linkedin.com")
     ? "Connect on LinkedIn"
     : "Book a quick intro";
@@ -205,11 +207,11 @@ function App() {
     setActiveFilter("All");
   }, [portfolio.projects]);
 
-  const filters = ["All", ...new Set((portfolio.projects || []).map((project) => project.type))];
+  const filters = ["All", ...new Set(projectList.map((project) => project.type).filter(Boolean))];
   const filteredProjects =
     activeFilter === "All"
-      ? portfolio.projects || []
-      : (portfolio.projects || []).filter((project) => project.type === activeFilter);
+      ? projectList
+      : projectList.filter((project) => project.type === activeFilter);
 
   return (
     <div className="app-shell">
@@ -297,7 +299,13 @@ function App() {
                 <p className="profile-card__label">Based in</p>
                 <strong>{portfolio.hero?.location}</strong>
               </div>
-              <div className="profile-spotlight" />
+              <div className="profile-photo-frame">
+                <img
+                  className="profile-photo"
+                  src={profileImage}
+                  alt={`Portrait of ${portfolio.hero?.name || "Prabanjan A"}`}
+                />
+              </div>
             </div>
 
             <div className="stats-grid">
@@ -413,47 +421,65 @@ function App() {
           </div>
 
           <div className="project-grid">
-            {filteredProjects.map((project) => (
-              <article className="panel project-card" key={project.title} data-reveal>
+            {filteredProjects.length ? (
+              filteredProjects.map((project, index) => (
+                <article
+                  className="panel project-card"
+                  key={`${project.title || "project"}-${project.year || index}`}
+                  data-reveal
+                >
+                  <div className="project-card__header">
+                    <div>
+                      <p className="project-card__meta">
+                        {project.type || "Project"} <span>{project.year || "Recent"}</span>
+                      </p>
+                      <h3>{project.title || "Untitled Project"}</h3>
+                    </div>
+                    {project.featured ? <span className="pill">Featured</span> : null}
+                  </div>
+
+                  <p>{project.summary || "Project details will appear here after the content is updated."}</p>
+
+                  <div className="metric-row">
+                    {(project.metrics || []).map((metric) => (
+                      <div className="metric-pill" key={metric}>
+                        {metric}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="tag-cloud">
+                    {(project.stack || []).map((item) => (
+                      <span className="tag-cloud__item" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  {project.links?.length ? (
+                    <div className="project-links">
+                      {project.links.map((link) => (
+                        <a key={link.label} href={link.url} target="_blank" rel="noreferrer">
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  ) : null}
+                </article>
+              ))
+            ) : (
+              <article className="panel project-card" data-reveal>
                 <div className="project-card__header">
                   <div>
                     <p className="project-card__meta">
-                      {project.type} <span>{project.year}</span>
+                      Projects <span>Pending</span>
                     </p>
-                    <h3>{project.title}</h3>
+                    <h3>No projects available</h3>
                   </div>
-                  {project.featured ? <span className="pill">Featured</span> : null}
                 </div>
-
-                <p>{project.summary}</p>
-
-                <div className="metric-row">
-                  {(project.metrics || []).map((metric) => (
-                    <div className="metric-pill" key={metric}>
-                      {metric}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="tag-cloud">
-                  {(project.stack || []).map((item) => (
-                    <span className="tag-cloud__item" key={item}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
-
-                {project.links?.length ? (
-                  <div className="project-links">
-                    {project.links.map((link) => (
-                      <a key={link.label} href={link.url} target="_blank" rel="noreferrer">
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                ) : null}
+                <p>Add or restore project entries and they will appear here automatically.</p>
               </article>
-            ))}
+            )}
           </div>
         </section>
 

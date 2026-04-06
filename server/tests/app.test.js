@@ -9,17 +9,20 @@ import Portfolio from "../src/models/Portfolio.js";
 
 const originalReadyState = mongoose.connection.readyState;
 const originalFindOne = Portfolio.findOne;
+const originalFindOneAndUpdate = Portfolio.findOneAndUpdate;
 const originalCreate = Message.create;
 
 beforeEach(() => {
   mongoose.connection.readyState = 0;
   Portfolio.findOne = originalFindOne;
+  Portfolio.findOneAndUpdate = originalFindOneAndUpdate;
   Message.create = originalCreate;
 });
 
 afterEach(() => {
   mongoose.connection.readyState = originalReadyState;
   Portfolio.findOne = originalFindOne;
+  Portfolio.findOneAndUpdate = originalFindOneAndUpdate;
   Message.create = originalCreate;
 });
 
@@ -76,6 +79,62 @@ test("GET /api/portfolio returns database content when MongoDB is connected", as
   assert.equal(response.status, 200);
   assert.equal(response.body.source, "database");
   assert.equal(response.body.data.hero.name, "Hosted Portfolio");
+});
+
+test("PUT /api/portfolio preserves nested fields when only part of a section is updated", async () => {
+  mongoose.connection.readyState = 1;
+
+  let capturedUpdate;
+
+  Portfolio.findOne = () => ({
+    lean: async () => portfolioSeed
+  });
+
+  Portfolio.findOneAndUpdate = (filter, update) => {
+    capturedUpdate = update;
+
+    return {
+      lean: async () => update
+    };
+  };
+
+  const response = await request(app).put("/api/portfolio").send({
+    hero: {
+      name: "Updated Prabanjan"
+    }
+  });
+
+  assert.equal(response.status, 200);
+  assert.equal(response.body.data.hero.name, "Updated Prabanjan");
+  assert.equal(response.body.data.hero.role, portfolioSeed.hero.role);
+  assert.equal(capturedUpdate.hero.location, portfolioSeed.hero.location);
+  assert.equal(capturedUpdate.projects[0].title, portfolioSeed.projects[0].title);
+});
+
+test("PUT /api/portfolio preserves existing project fields during partial project updates", async () => {
+  mongoose.connection.readyState = 1;
+
+  Portfolio.findOne = () => ({
+    lean: async () => portfolioSeed
+  });
+
+  Portfolio.findOneAndUpdate = (filter, update) => ({
+    lean: async () => update
+  });
+
+  const response = await request(app).put("/api/portfolio").send({
+    projects: [
+      {
+        title: "Updated Blog Title"
+      }
+    ]
+  });
+
+  assert.equal(response.status, 200);
+  assert.equal(response.body.data.projects[0].title, "Updated Blog Title");
+  assert.equal(response.body.data.projects[0].type, portfolioSeed.projects[0].type);
+  assert.equal(response.body.data.projects[0].summary, portfolioSeed.projects[0].summary);
+  assert.equal(response.body.data.projects[1].title, portfolioSeed.projects[1].title);
 });
 
 test("POST /api/messages validates required fields", async () => {
