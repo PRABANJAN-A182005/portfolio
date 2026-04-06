@@ -7,7 +7,7 @@ export async function getPortfolio(req, res, next) {
     if (!isDatabaseConnected()) {
       return res.status(200).json({
         source: "seed",
-        message: "MongoDB is not connected yet. Showing starter portfolio content.",
+        message: "MongoDB is not connected yet. Showing portfolio content from the local seed file.",
         data: portfolioSeed
       });
     }
@@ -17,7 +17,7 @@ export async function getPortfolio(req, res, next) {
     if (!portfolio) {
       return res.status(200).json({
         source: "seed",
-        message: "No portfolio document found. Run the seed script to load starter content into MongoDB.",
+        message: "No portfolio document found. Run the seed script to load this portfolio content into MongoDB.",
         data: portfolioSeed
       });
     }

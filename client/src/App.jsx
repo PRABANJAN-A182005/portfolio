@@ -3,127 +3,146 @@ import { usePortfolio } from "./hooks/usePortfolio";
 
 const fallbackPortfolio = {
   hero: {
-    name: "Aarav Mehta",
-    role: "Full-Stack MERN Developer",
-    tagline: "Designing thoughtful digital products with responsive UI and dependable backend architecture.",
-    location: "Bengaluru, India",
-    availability: "Available for freelance and full-time roles",
+    name: "Prabanjan A",
+    role: "Frontend & MERN Developer",
+    tagline:
+      "I build responsive React interfaces and MERN applications with clean APIs, practical backend thinking, and user-focused frontend execution.",
+    location: "India",
+    availability: "Open to frontend and full-stack developer roles",
     intro:
-      "I build fast, human-centered web experiences that blend product thinking, elegant interfaces, and practical engineering.",
-    highlights: ["React", "Node.js", "MongoDB", "UI Systems"],
-    ctaPrimary: "Explore Projects",
-    ctaSecondary: "Contact Me"
+      "From blog platforms and attendance systems to event websites and API-powered apps, I enjoy turning ideas into web experiences that feel clear, fast, and dependable.",
+    highlights: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+    ctaPrimary: "View Projects",
+    ctaSecondary: "Get In Touch"
   },
   socials: [
-    { label: "GitHub", url: "https://github.com/" },
-    { label: "LinkedIn", url: "https://linkedin.com/" },
-    { label: "Email", url: "mailto:hello@example.com" }
+    { label: "GitHub", url: "https://github.com/PRABANJAN-A182005" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/prabanjan-a-1008b6346/" },
+    { label: "LeetCode", url: "https://leetcode.com/u/Prabanjan_A/" },
+    { label: "Email", url: "mailto:prabanjan.offical@gmail.com" }
   ],
   stats: [
-    { value: "4+", label: "Years Building Products" },
-    { value: "15", label: "Launches Delivered" },
-    { value: "99%", label: "Responsive Coverage" }
+    { value: "4", label: "Projects Featured" },
+    { value: "8.44", label: "Current CGPA" },
+    { value: "2026", label: "Graduation Year" }
   ],
   about: {
-    title: "Building products that feel sharp, calm, and ready for real users.",
+    title: "React-first interfaces, practical MERN foundations, and steady hands-on learning.",
     paragraphs: [
-      "I focus on the overlap between engineering reliability and interface craft. That means production-grade APIs, clean data models, and frontends that feel deliberate on every screen size.",
-      "My favorite projects are the ones where strategy, UI, and code all matter at once. I enjoy owning that full journey."
+      "I am an Electronics and Communication Engineering student building web applications with React.js, Node.js, Express.js, and MongoDB. My work focuses on responsive interfaces, REST APIs, and backend fundamentals that keep products usable and maintainable.",
+      "Through academic projects, certifications, and my internship at Sona Comstar, I have been strengthening both frontend execution and full-stack problem solving. I enjoy shipping features that solve real needs, from content platforms and attendance systems to event sites and search experiences."
     ],
     focus: [
-      "Responsive React frontends with strong visual hierarchy",
-      "Express APIs and clean service boundaries",
-      "MongoDB schemas that stay practical as products grow"
+      "Responsive React.js interfaces with clean structure and mobile-first thinking",
+      "RESTful API development with Express.js and MongoDB-backed workflows",
+      "Consistent self-learning through projects, certifications, and industry exposure"
     ]
   },
   skills: [
     {
       category: "Frontend",
-      summary: "Responsive interfaces with layered visuals, strong hierarchy, and clean React structure.",
-      items: ["React", "Vite", "JavaScript", "CSS", "Responsive UI", "Accessibility"]
+      summary: "Responsive interfaces built with modern React workflows and clean styling foundations.",
+      items: ["HTML", "CSS", "React.js", "Tailwind CSS", "Vite", "Responsive UI"]
     },
     {
       category: "Backend",
-      summary: "Practical APIs and data models designed to stay simple as the product grows.",
-      items: ["Node.js", "Express", "MongoDB", "Mongoose", "REST APIs", "Validation"]
+      summary: "Practical backend fundamentals for APIs, authentication, and database-backed applications.",
+      items: ["Node.js", "Express.js", "REST APIs", "JWT", "MongoDB", "MySQL"]
     },
     {
-      category: "Product UI",
-      summary: "Intentional visual systems that make web products feel more polished and more useful.",
-      items: ["Design Systems", "Wireframing", "Motion", "UX Copy", "Prototyping", "Mobile-first Design"]
+      category: "Languages & Tools",
+      summary: "Day-to-day tools and foundations that support development, debugging, and delivery.",
+      items: ["JavaScript", "Java", "Git", "GitHub", "Postman", "Material UI"]
     }
   ],
   projects: [
     {
-      title: "StudioPulse Portfolio CMS",
-      type: "Portfolio",
-      year: "2026",
-      summary: "A portfolio platform with editable content, category filters, and lead capture built on a MERN foundation.",
-      stack: ["React", "Express", "MongoDB", "Vite"],
-      metrics: ["42% faster content edits", "API-driven sections", "Mobile-first redesign"],
-      links: [
-        { label: "Live Demo", url: "https://example.com" },
-        { label: "Source Code", url: "https://github.com/" }
-      ],
-      featured: true
-    },
-    {
-      title: "Northstar Commerce Dashboard",
-      type: "Dashboard",
+      title: "Blog",
+      type: "MERN App",
       year: "2025",
-      summary: "An operations dashboard with responsive KPI views, reusable interface modules, and cleaner reporting workflows.",
-      stack: ["React", "Node.js", "MongoDB", "REST API"],
-      metrics: ["26% faster reporting", "Shared UI patterns", "Responsive analytics layout"],
-      links: [
-        { label: "Case Study", url: "https://example.com" },
-        { label: "GitHub", url: "https://github.com/" }
-      ],
+      summary: "Full-stack MERN blog platform with dynamic routing, category-based post discovery, and CRUD workflows powered by REST APIs.",
+      stack: ["MongoDB", "Express.js", "React.js", "Node.js", "JavaScript", "HTML", "CSS"],
+      metrics: ["Dynamic routing", "Category-based posts", "RESTful CRUD APIs"],
+      links: [],
       featured: true
     },
     {
-      title: "Campus Connect Platform",
+      title: "Employee Attendance Web Application",
       type: "Web App",
+      year: "2025",
+      summary:
+        "Attendance management system with secure authentication, role-based access, and dashboard tracking for employees and managers.",
+      stack: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "Material UI"],
+      metrics: ["Secure authentication", "Role-based access", "Dashboard tracking"],
+      links: [],
+      featured: true
+    },
+    {
+      title: "Electrothrive Symposium Website",
+      type: "Website",
       year: "2024",
-      summary: "A student community app focused on discoverability, event communication, and a lighter mobile navigation model.",
-      stack: ["MERN", "Responsive UI", "REST API"],
-      metrics: ["2.1x repeat engagement", "Accessible card layout", "Single-query feed strategy"],
-      links: [
-        { label: "Overview", url: "https://example.com" },
-        { label: "Repository", url: "https://github.com/" }
-      ],
+      summary:
+        "Official college symposium website built to showcase events, schedules, and registration information through a responsive interface.",
+      stack: ["HTML", "CSS", "JavaScript", "Tailwind CSS"],
+      metrics: ["Responsive event pages", "Schedule visibility", "Registration flow"],
+      links: [],
+      featured: false
+    },
+    {
+      title: "Movie Search & Favorites App",
+      type: "React App",
+      year: "2024",
+      summary: "React + Vite movie explorer that uses the OMDb API for search and detail views while saving favorite titles locally.",
+      stack: ["React.js", "JavaScript", "Vite", "HTML", "CSS", "OMDb API"],
+      metrics: ["OMDb API integration", "Local favorites storage", "Fast Vite workflow"],
+      links: [],
       featured: false
     }
   ],
   experience: [
     {
-      company: "Brightlayer Studio",
-      role: "Senior MERN Developer",
-      period: "2024 - Present",
-      summary: "Leading full-stack delivery for product sites and internal tools with an emphasis on maintainable UI systems.",
+      company: "Sona Comstar",
+      role: "Manufacturing Intern",
+      period: "December 2024",
+      summary:
+        "Completed an internship in the Manufacturing Department with exposure to EV traction systems, hub motors, and drive motors in a real industrial environment.",
       achievements: [
-        "Created reusable section patterns that cut new page build time nearly in half.",
-        "Introduced MongoDB-backed content structures for easier updates.",
-        "Improved mobile UX scores through layout and interaction refinements."
+        "Observed how embedded systems and software controls contribute to motor performance and efficiency.",
+        "Built practical understanding of EV manufacturing workflows and traction system components.",
+        "Strengthened teamwork and professional communication in a workplace setting."
       ]
     },
     {
-      company: "Craftloop Digital",
-      role: "Frontend Engineer",
-      period: "2022 - 2024",
-      summary: "Built responsive interfaces for startups and early-stage SaaS products with strong design collaboration.",
+      company: "Vel Tech High Tech Dr. Rangarajan Dr. Sakunthala Engineering College",
+      role: "B.E. Electronics & Communication Engineering",
+      period: "2022 - 2026",
+      summary:
+        "Pursuing undergraduate studies while building full-stack web projects and expanding frontend and backend development skills.",
       achievements: [
-        "Translated design concepts into consistent React components.",
-        "Added interaction patterns that improved scanability without adding clutter.",
-        "Worked closely with backend teams to simplify API state handling."
+        "Current CGPA: 8.44.",
+        "Developed portfolio-ready projects across MERN, React, and JavaScript workflows.",
+        "Balanced engineering coursework with continuous software self-learning."
+      ]
+    },
+    {
+      company: "Udemy & NPTEL",
+      role: "Continuous Learning",
+      period: "Completed",
+      summary: "Used structured coursework and competitions to strengthen software foundations beyond classroom work.",
+      achievements: [
+        "Completed a Full-Stack Web Development course on Udemy.",
+        "Completed Programming in Java through NPTEL.",
+        "Secured 3rd place in paper presentation at Euphoria 2024 (J.N.N Institutions)."
       ]
     }
   ],
   contact: {
-    email: "hello@example.com",
-    phone: "+91 98765 43210",
-    location: "Bengaluru, India",
-    note: "Tell me about the product, timeline, and what success looks like for your team.",
-    calendly: "https://calendly.com/"
+    email: "prabanjan.offical@gmail.com",
+    phone: "+91 8072140893",
+    location: "India",
+    note:
+      "I am currently looking for frontend or full-stack developer opportunities, internships, and collaborative web projects. Reach out by email, phone, or LinkedIn.",
+    calendly: "https://www.linkedin.com/in/prabanjan-a-1008b6346/"
   }
 };
 
@@ -139,6 +158,9 @@ const navLinks = [
 function App() {
   const { data, source, message, isLoading, error } = usePortfolio();
   const portfolio = data || fallbackPortfolio;
+  const contactLinkLabel = portfolio.contact?.calendly?.includes("linkedin.com")
+    ? "Connect on LinkedIn"
+    : "Book a quick intro";
   const [theme, setTheme] = useState("sunlit");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All");
@@ -199,7 +221,7 @@ function App() {
             <span className="brand-mark__pulse" />
             <span>
               {portfolio.hero?.name?.split(" ")[0] || "Portfolio"}
-              <small>MERN Portfolio</small>
+              <small>Developer Portfolio</small>
             </span>
           </a>
 
@@ -301,7 +323,7 @@ function App() {
           {source ? (
             <div className="status-banner panel" data-reveal>
               <p>
-                <strong>{source === "database" ? "MongoDB connected" : "Seed content mode"}</strong>{" "}
+                <strong>{source === "database" ? "MongoDB connected" : "Local portfolio mode"}</strong>{" "}
                 {message ||
                   (source === "database"
                     ? "Portfolio data is loading from MongoDB."
@@ -322,8 +344,8 @@ function App() {
         <section className="section container" id="about">
           <SectionHeading
             eyebrow="About"
-            title={portfolio.about?.title || "A portfolio built for product-minded engineering."}
-            description="This layout is tuned for clarity on mobile, visual depth on desktop, and easy future content updates through the API."
+            title={portfolio.about?.title || "React-first interfaces, practical MERN foundations, and steady hands-on learning."}
+            description="A concise look at my background, technical focus, and the kind of work I am preparing to contribute to."
           />
 
           <div className="about-grid">
@@ -347,8 +369,8 @@ function App() {
         <section className="section container" id="skills">
           <SectionHeading
             eyebrow="Skills"
-            title="Stack depth across product, backend, and interface work."
-            description="The portfolio content is grouped to make scanning easier for recruiters, clients, and collaborators."
+            title="Core tools I use across frontend, backend, and project delivery."
+            description="Grouped to make it easy to scan the technologies I rely on most in academic and personal builds."
           />
 
           <div className="skill-grid">
@@ -373,8 +395,8 @@ function App() {
         <section className="section container" id="projects">
           <SectionHeading
             eyebrow="Projects"
-            title="Selected work with strong UX, API thinking, and measurable outcomes."
-            description="The filter buttons are an extra UI touch that makes it easier to explore your work by category."
+            title="Selected academic and personal work built with React, MERN, and API integrations."
+            description="Each project highlights hands-on implementation work from real builds rather than template case studies."
           />
 
           <div className="filter-row" data-reveal>
@@ -421,13 +443,15 @@ function App() {
                   ))}
                 </div>
 
-                <div className="project-links">
-                  {(project.links || []).map((link) => (
-                    <a key={link.label} href={link.url} target="_blank" rel="noreferrer">
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
+                {project.links?.length ? (
+                  <div className="project-links">
+                    {project.links.map((link) => (
+                      <a key={link.label} href={link.url} target="_blank" rel="noreferrer">
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
               </article>
             ))}
           </div>
@@ -436,8 +460,8 @@ function App() {
         <section className="section container" id="experience">
           <SectionHeading
             eyebrow="Experience"
-            title="Product-focused delivery across startups and agency teams."
-            description="The vertical timeline keeps longer career stories readable on both narrow and wide screens."
+            title="Internship experience, education, and continuous learning."
+            description="This timeline focuses on the practical milestones shaping my early software journey."
           />
 
           <div className="timeline">
@@ -464,13 +488,13 @@ function App() {
         <section className="section container" id="contact">
           <SectionHeading
             eyebrow="Contact"
-            title="Ready to turn the portfolio into your own story."
-            description="The form posts to the backend so you can extend it later with email integrations, admin tools, or analytics."
+            title="Open to frontend and full-stack opportunities."
+            description="If you would like to discuss a role, internship, or collaboration, feel free to reach out directly."
           />
 
           <div className="contact-grid">
             <article className="panel contact-card" data-reveal>
-              <h3>Let&apos;s build something with momentum.</h3>
+              <h3>Let&apos;s connect.</h3>
               <p>{portfolio.contact?.note}</p>
 
               <div className="contact-stack">
@@ -478,7 +502,7 @@ function App() {
                 <a href={`tel:${portfolio.contact?.phone}`}>{portfolio.contact?.phone}</a>
                 <span>{portfolio.contact?.location}</span>
                 <a href={portfolio.contact?.calendly} target="_blank" rel="noreferrer">
-                  Book a quick intro
+                  {contactLinkLabel}
                 </a>
               </div>
             </article>
@@ -490,7 +514,7 @@ function App() {
 
       <footer className="site-footer">
         <div className="container site-footer__row">
-          <p>Built with React, Express, MongoDB, and thoughtful CSS for a polished first impression.</p>
+          <p>Built with React, Express, MongoDB, and personalized with details from my resume.</p>
           <a href="#home">Back to top</a>
         </div>
       </footer>

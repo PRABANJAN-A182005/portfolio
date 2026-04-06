@@ -1,146 +1,148 @@
 const portfolioSeed = {
   hero: {
-    name: "Aarav Mehta",
-    role: "Full-Stack MERN Developer",
+    name: "Prabanjan A",
+    role: "Frontend & MERN Developer",
     tagline:
-      "I craft responsive portfolio experiences, scalable APIs, and product-ready interfaces that feel clean on every device.",
-    location: "Bengaluru, India",
-    availability: "Open to freelance builds and product teams",
+      "I build responsive React interfaces and MERN applications with clean APIs, practical backend thinking, and user-focused frontend execution.",
+    location: "India",
+    availability: "Open to frontend and full-stack developer roles",
     intro:
-      "With a balance of frontend polish and backend discipline, I help teams ship websites and apps that look premium without losing maintainability.",
-    highlights: ["React", "Node.js", "Express", "MongoDB", "Responsive UI"],
-    ctaPrimary: "Explore Projects",
-    ctaSecondary: "Contact Me"
+      "From blog platforms and attendance systems to event websites and API-powered apps, I enjoy turning ideas into web experiences that feel clear, fast, and dependable.",
+    highlights: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+    ctaPrimary: "View Projects",
+    ctaSecondary: "Get In Touch"
   },
   socials: [
-    { label: "GitHub", url: "https://github.com/" },
-    { label: "LinkedIn", url: "https://linkedin.com/" },
-    { label: "Behance", url: "https://behance.net/" },
-    { label: "Email", url: "mailto:hello@example.com" }
+    { label: "GitHub", url: "https://github.com/PRABANJAN-A182005" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/prabanjan-a-1008b6346/" },
+    { label: "LeetCode", url: "https://leetcode.com/u/Prabanjan_A/" },
+    { label: "Email", url: "mailto:prabanjan.offical@gmail.com" }
   ],
   stats: [
-    { value: "18+", label: "Projects Launched" },
-    { value: "4+", label: "Years of Experience" },
-    { value: "30%", label: "Average UX Lift on Redesigns" }
+    { value: "4", label: "Projects Featured" },
+    { value: "8.44", label: "Current CGPA" },
+    { value: "2026", label: "Graduation Year" }
   ],
   about: {
-    title: "Product thinking, expressive UI, and backend reliability in one workflow.",
+    title: "React-first interfaces, practical MERN foundations, and steady hands-on learning.",
     paragraphs: [
-      "I enjoy building portfolios and business websites that do more than look attractive. They should tell a story quickly, feel effortless on mobile, and still give you a backend that is easy to grow later.",
-      "On the engineering side, I keep the API and database model straightforward so future changes stay manageable. On the design side, I focus on rhythm, motion, and visual hierarchy that makes the work memorable."
+      "I am an Electronics and Communication Engineering student building web applications with React.js, Node.js, Express.js, and MongoDB. My work focuses on responsive interfaces, REST APIs, and backend fundamentals that keep products usable and maintainable.",
+      "Through academic projects, certifications, and my internship at Sona Comstar, I have been strengthening both frontend execution and full-stack problem solving. I enjoy shipping features that solve real needs, from content platforms and attendance systems to event sites and search experiences."
     ],
     focus: [
-      "Responsive interfaces with deliberate typography and layered depth",
-      "Express and MongoDB foundations that are easy to extend",
-      "Portfolio storytelling that helps recruiters and clients scan quickly"
+      "Responsive React.js interfaces with clean structure and mobile-first thinking",
+      "RESTful API development with Express.js and MongoDB-backed workflows",
+      "Consistent self-learning through projects, certifications, and industry exposure"
     ]
   },
   skills: [
     {
       category: "Frontend",
-      summary: "Modern interfaces with strong responsiveness, smooth states, and performance-minded structure.",
-      items: ["React", "Vite", "JavaScript", "CSS", "Responsive Design", "REST Integration"]
+      summary: "Responsive interfaces built with modern React workflows and clean styling foundations.",
+      items: ["HTML", "CSS", "React.js", "Tailwind CSS", "Vite", "Responsive UI"]
     },
     {
       category: "Backend",
-      summary: "APIs and services built with clarity, predictable routes, and practical validation.",
-      items: ["Node.js", "Express", "Mongoose", "MongoDB", "Authentication", "API Design"]
+      summary: "Practical backend fundamentals for APIs, authentication, and database-backed applications.",
+      items: ["Node.js", "Express.js", "REST APIs", "JWT", "MongoDB", "MySQL"]
     },
     {
-      category: "Product UI",
-      summary: "Interface systems that help products look more intentional and easier to use.",
-      items: ["Wireframing", "Design Systems", "Motion", "Accessibility", "UX Writing", "Prototyping"]
+      category: "Languages & Tools",
+      summary: "Day-to-day tools and foundations that support development, debugging, and delivery.",
+      items: ["JavaScript", "Java", "Git", "GitHub", "Postman", "Material UI"]
     }
   ],
   projects: [
     {
-      title: "StudioPulse Portfolio CMS",
-      type: "Portfolio",
-      year: "2026",
-      summary:
-        "A multi-section creator portfolio with an editable MongoDB content model, project filters, and lead capture.",
-      stack: ["React", "Express", "MongoDB", "Vite"],
-      metrics: ["42% faster content updates", "Mobile-first redesign", "API-backed contact form"],
-      links: [
-        { label: "Live Demo", url: "https://example.com" },
-        { label: "Source Code", url: "https://github.com/" }
-      ],
-      featured: true
-    },
-    {
-      title: "Northstar Commerce Dashboard",
-      type: "Dashboard",
+      title: "Blog",
+      type: "MERN App",
       year: "2025",
       summary:
-        "Admin dashboard for catalog and campaign tracking with responsive charts, role-based modules, and KPI summaries.",
-      stack: ["React", "Node.js", "MongoDB", "Chart UI"],
-      metrics: ["26% quicker campaign setup", "Unified analytics view", "Reusable component system"],
-      links: [
-        { label: "Case Study", url: "https://example.com" },
-        { label: "GitHub", url: "https://github.com/" }
-      ],
+        "Full-stack MERN blog platform with dynamic routing, category-based post discovery, and CRUD workflows powered by REST APIs.",
+      stack: ["MongoDB", "Express.js", "React.js", "Node.js", "JavaScript", "HTML", "CSS"],
+      metrics: ["Dynamic routing", "Category-based posts", "RESTful CRUD APIs"],
+      links: [],
       featured: true
     },
     {
-      title: "Campus Connect Platform",
+      title: "Employee Attendance Web Application",
       type: "Web App",
+      year: "2025",
+      summary:
+        "Attendance management system with secure authentication, role-based access, and dashboard tracking for employees and managers.",
+      stack: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "Material UI"],
+      metrics: ["Secure authentication", "Role-based access", "Dashboard tracking"],
+      links: [],
+      featured: true
+    },
+    {
+      title: "Electrothrive Symposium Website",
+      type: "Website",
       year: "2024",
       summary:
-        "Community platform for student events, onboarding, and messaging with a streamlined mobile navigation pattern.",
-      stack: ["MERN", "Socket-ready API", "Responsive UI"],
-      metrics: ["2.1x repeat engagement", "Single-query event feed", "Accessible card layouts"],
-      links: [
-        { label: "Overview", url: "https://example.com" },
-        { label: "Repository", url: "https://github.com/" }
-      ],
+        "Official college symposium website built to showcase events, schedules, and registration information through a responsive interface.",
+      stack: ["HTML", "CSS", "JavaScript", "Tailwind CSS"],
+      metrics: ["Responsive event pages", "Schedule visibility", "Registration flow"],
+      links: [],
+      featured: false
+    },
+    {
+      title: "Movie Search & Favorites App",
+      type: "React App",
+      year: "2024",
+      summary:
+        "React + Vite movie explorer that uses the OMDb API for search and detail views while saving favorite titles locally.",
+      stack: ["React.js", "JavaScript", "Vite", "HTML", "CSS", "OMDb API"],
+      metrics: ["OMDb API integration", "Local favorites storage", "Fast Vite workflow"],
+      links: [],
       featured: false
     }
   ],
   experience: [
     {
-      company: "Brightlayer Studio",
-      role: "Senior MERN Developer",
-      period: "2024 - Present",
+      company: "Sona Comstar",
+      role: "Manufacturing Intern",
+      period: "December 2024",
       summary:
-        "Leading full-stack delivery for marketing sites, internal platforms, and product landing pages with a focus on maintainable UI systems.",
+        "Completed an internship in the Manufacturing Department with exposure to EV traction systems, hub motors, and drive motors in a real industrial environment.",
       achievements: [
-        "Built reusable React sections that cut new page build time by nearly half.",
-        "Introduced MongoDB-backed content structures for lightweight admin tooling.",
-        "Raised Lighthouse mobile scores across client projects with layout and asset improvements."
+        "Observed how embedded systems and software controls contribute to motor performance and efficiency.",
+        "Built practical understanding of EV manufacturing workflows and traction system components.",
+        "Strengthened teamwork and professional communication in a workplace setting."
       ]
     },
     {
-      company: "Craftloop Digital",
-      role: "Frontend Engineer",
-      period: "2022 - 2024",
+      company: "Vel Tech High Tech Dr. Rangarajan Dr. Sakunthala Engineering College",
+      role: "B.E. Electronics & Communication Engineering",
+      period: "2022 - 2026",
       summary:
-        "Delivered responsive experiences for startup websites and early-stage SaaS products in close collaboration with design teams.",
+        "Pursuing undergraduate studies while building full-stack web projects and expanding frontend and backend development skills.",
       achievements: [
-        "Translated visual concepts into component-driven interfaces with stronger consistency.",
-        "Created animation and interaction patterns that improved scanability without harming usability.",
-        "Partnered with backend developers to simplify API states and error handling in the UI."
+        "Current CGPA: 8.44.",
+        "Developed portfolio-ready projects across MERN, React, and JavaScript workflows.",
+        "Balanced engineering coursework with continuous software self-learning."
       ]
     },
     {
-      company: "Freelance",
-      role: "Web Developer",
-      period: "2020 - 2022",
+      company: "Udemy & NPTEL",
+      role: "Continuous Learning",
+      period: "Completed",
       summary:
-        "Built branding sites, portfolio websites, and small business dashboards with an emphasis on speed and clarity.",
+        "Used structured coursework and competitions to strengthen software foundations beyond classroom work.",
       achievements: [
-        "Delivered end-to-end projects from discovery to deployment.",
-        "Helped clients modernize dated layouts into mobile-friendly experiences.",
-        "Set up lightweight Express services and MongoDB storage for lead management."
+        "Completed a Full-Stack Web Development course on Udemy.",
+        "Completed Programming in Java through NPTEL.",
+        "Secured 3rd place in paper presentation at Euphoria 2024 (J.N.N Institutions)."
       ]
     }
   ],
   contact: {
-    email: "hello@example.com",
-    phone: "+91 98765 43210",
-    location: "Bengaluru, India",
+    email: "prabanjan.offical@gmail.com",
+    phone: "+91 8072140893",
+    location: "India",
     note:
-      "If you want this portfolio adapted to your own profile, the content lives in a single API shape so it is easy to personalize.",
-    calendly: "https://calendly.com/"
+      "I am currently looking for frontend or full-stack developer opportunities, internships, and collaborative web projects. Reach out by email, phone, or LinkedIn.",
+    calendly: "https://www.linkedin.com/in/prabanjan-a-1008b6346/"
   }
 };
 
