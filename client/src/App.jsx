@@ -156,10 +156,47 @@ const navLinks = [
   { label: "Contact", href: "#contact" }
 ];
 
+function normalizeDisplayArray(value) {
+  if (Array.isArray(value)) {
+    return value.map((item) => String(item).trim()).filter(Boolean);
+  }
+
+  if (typeof value === "string") {
+    const trimmedValue = value.trim();
+    return trimmedValue ? [trimmedValue] : [];
+  }
+
+  return [];
+}
+
+function normalizeProjectLinks(value) {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .filter(Boolean)
+    .map((link) => ({
+      label: String(link.label || "").trim(),
+      url: String(link.url || "").trim()
+    }))
+    .filter((link) => link.label && link.url);
+}
+
 function App() {
   const { data, source, message, isLoading, error } = usePortfolio();
   const portfolio = data || fallbackPortfolio;
-  const projectList = Array.isArray(portfolio.projects) ? portfolio.projects.filter(Boolean) : [];
+  const projectList = Array.isArray(portfolio.projects)
+    ? portfolio.projects
+        .filter(Boolean)
+        .map((project) => ({
+          ...project,
+          type: String(project.type || "").trim(),
+          stack: normalizeDisplayArray(project.stack),
+          metrics: normalizeDisplayArray(project.metrics),
+          links: normalizeProjectLinks(project.links)
+        }))
+    : [];
   const contactLinkLabel = portfolio.contact?.calendly?.includes("linkedin.com")
     ? "Connect on LinkedIn"
     : "Book a quick intro";

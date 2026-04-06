@@ -81,6 +81,44 @@ test("GET /api/portfolio returns database content when MongoDB is connected", as
   assert.equal(response.body.data.hero.name, "Hosted Portfolio");
 });
 
+test("GET /api/portfolio normalizes malformed project arrays from database content", async () => {
+  mongoose.connection.readyState = 1;
+  Portfolio.findOne = () => ({
+    lean: async () => ({
+      ...portfolioSeed,
+      projects: [
+        {
+          ...portfolioSeed.projects[0],
+          stack: "MongoDB Express.js React.js",
+          metrics: "Dynamic routing Category-based posts RESTful CRUD APIs",
+          links: ""
+        }
+      ],
+      skills: [
+        {
+          ...portfolioSeed.skills[0],
+          items: "HTML CSS React.js"
+        }
+      ],
+      experience: [
+        {
+          ...portfolioSeed.experience[0],
+          achievements: "Observed how embedded systems work."
+        }
+      ]
+    })
+  });
+
+  const response = await request(app).get("/api/portfolio");
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(response.body.data.projects[0].stack, portfolioSeed.projects[0].stack);
+  assert.deepEqual(response.body.data.projects[0].metrics, portfolioSeed.projects[0].metrics);
+  assert.deepEqual(response.body.data.projects[0].links, []);
+  assert.deepEqual(response.body.data.skills[0].items, portfolioSeed.skills[0].items);
+  assert.deepEqual(response.body.data.experience[0].achievements, portfolioSeed.experience[0].achievements);
+});
+
 test("PUT /api/portfolio preserves nested fields when only part of a section is updated", async () => {
   mongoose.connection.readyState = 1;
 
