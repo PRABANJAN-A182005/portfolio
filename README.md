@@ -11,9 +11,10 @@ The app is designed to work even before MongoDB is connected. In that mode, the 
 
 - Responsive landing page with hero, about, skills, projects, experience, and contact sections
 - Theme toggle with saved preference
-- Project category filters
+- Full project gallery with every project shown together
 - Contact form connected to the Express API
 - MongoDB-backed portfolio content and message storage
+- Optional SMTP email forwarding for contact form submissions
 - Graceful fallback to seed content when `MONGO_URI` is not configured
 
 ## Run locally
@@ -24,7 +25,7 @@ The app is designed to work even before MongoDB is connected. In that mode, the 
 npm install
 ```
 
-2. Copy the server env example and add your MongoDB connection string:
+2. Copy the server env example and add your MongoDB connection string. If you want the contact form to reach your inbox, also add SMTP credentials:
 
 ```bash
 copy server\.env.example server\.env
@@ -87,5 +88,11 @@ Set these in Netlify if you want the API backed by MongoDB:
 
 - `MONGO_URI`
 - `CLIENT_URL`
+- `CONTACT_INBOX`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `SMTP_FROM`
 
 You can set `CLIENT_URL` to your deployed Netlify site URL, for example `https://your-site-name.netlify.app`.

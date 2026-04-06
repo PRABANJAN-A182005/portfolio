@@ -183,6 +183,11 @@ function normalizeProjectLinks(value) {
     .filter((link) => link.label && link.url);
 }
 
+function getProjectAccent(index) {
+  const accents = ["sun", "reef", "coral", "mint"];
+  return accents[index % accents.length];
+}
+
 function App() {
   const { data, source, message, isLoading, error } = usePortfolio();
   const portfolio = data || fallbackPortfolio;
@@ -202,7 +207,6 @@ function App() {
     : "Book a quick intro";
   const [theme, setTheme] = useState("sunlit");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeFilter, setActiveFilter] = useState("All");
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("portfolio-theme");
@@ -239,16 +243,6 @@ function App() {
       observer.disconnect();
     };
   }, [portfolio]);
-
-  useEffect(() => {
-    setActiveFilter("All");
-  }, [portfolio.projects]);
-
-  const filters = ["All", ...new Set(projectList.map((project) => project.type).filter(Boolean))];
-  const filteredProjects =
-    activeFilter === "All"
-      ? projectList
-      : projectList.filter((project) => project.type === activeFilter);
 
   return (
     <div className="app-shell">
@@ -440,33 +434,33 @@ function App() {
         <section className="section container" id="projects">
           <SectionHeading
             eyebrow="Projects"
-            title="Selected academic and personal work built with React, MERN, and API integrations."
-            description="Each project highlights hands-on implementation work from real builds rather than template case studies."
+            title="A complete project gallery built around the work I have actually shipped."
+            description="Every project stays visible here in its original portfolio order, so nothing is hidden behind filters or sorting controls."
           />
 
-          <div className="filter-row" data-reveal>
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                className={filter === activeFilter ? "filter-chip is-active" : "filter-chip"}
-                type="button"
-                onClick={() => setActiveFilter(filter)}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
+          <article className="panel project-gallery-intro" data-reveal>
+            <div>
+              <p className="eyebrow eyebrow-muted">Full Portfolio</p>
+              <h3>Every build is shown in one place.</h3>
+            </div>
+            <p>
+              From MERN apps to event websites and API-based tools, this section now shows the full set of
+              projects without filter bugs, hidden cards, or sorting changes.
+            </p>
+            <strong>{projectList.length || 0} projects showcased</strong>
+          </article>
 
           <div className="project-grid">
-            {filteredProjects.length ? (
-              filteredProjects.map((project, index) => (
+            {projectList.length ? (
+              projectList.map((project, index) => (
                 <article
-                  className="panel project-card"
+                  className={`panel project-card project-card--${getProjectAccent(index)}`}
                   key={`${project.title || "project"}-${project.year || index}`}
                   data-reveal
                 >
                   <div className="project-card__header">
                     <div>
+                      <span className="project-card__index">{String(index + 1).padStart(2, "0")}</span>
                       <p className="project-card__meta">
                         {project.type || "Project"} <span>{project.year || "Recent"}</span>
                       </p>
@@ -643,7 +637,9 @@ function ContactForm({ source, contactEmail }) {
 
       setStatus({
         type: "success",
-        message: payload.message || "Your message has been sent successfully."
+        message:
+          [payload.message, payload.warning].filter(Boolean).join(" ") ||
+          "Your message has been sent successfully."
       });
       setFormData({
         name: "",
@@ -732,8 +728,8 @@ function ContactForm({ source, contactEmail }) {
 
       <p className="form-helper">
         {source === "database"
-          ? "Messages will be saved to MongoDB."
-          : "Hosted without MongoDB? The direct contact email below will still work while you finish setup."}
+          ? "Messages are stored in MongoDB, and email forwarding can deliver them to the portfolio inbox when SMTP is configured."
+          : "If MongoDB is offline, the form can still email the portfolio inbox once SMTP is configured on the server."}
       </p>
 
       {contactEmail ? (

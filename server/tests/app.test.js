@@ -6,17 +6,42 @@ import app from "../src/app.js";
 import portfolioSeed from "../src/data/portfolio.seed.js";
 import Message from "../src/models/Message.js";
 import Portfolio from "../src/models/Portfolio.js";
+import {
+  resetMailerForTesting,
+  setTransportFactoryForTesting
+} from "../src/services/contactMailer.js";
 
 const originalReadyState = mongoose.connection.readyState;
 const originalFindOne = Portfolio.findOne;
 const originalFindOneAndUpdate = Portfolio.findOneAndUpdate;
 const originalCreate = Message.create;
+const originalMailEnv = {
+  CONTACT_INBOX: process.env.CONTACT_INBOX,
+  SMTP_HOST: process.env.SMTP_HOST,
+  SMTP_PORT: process.env.SMTP_PORT,
+  SMTP_USER: process.env.SMTP_USER,
+  SMTP_PASS: process.env.SMTP_PASS,
+  SMTP_FROM: process.env.SMTP_FROM
+};
+
+function restoreMailEnv() {
+  Object.entries(originalMailEnv).forEach(([key, value]) => {
+    if (value === undefined) {
+      delete process.env[key];
+      return;
+    }
+
+    process.env[key] = value;
+  });
+}
 
 beforeEach(() => {
   mongoose.connection.readyState = 0;
   Portfolio.findOne = originalFindOne;
   Portfolio.findOneAndUpdate = originalFindOneAndUpdate;
   Message.create = originalCreate;
+  resetMailerForTesting();
+  restoreMailEnv();
 });
 
 afterEach(() => {
@@ -24,6 +49,8 @@ afterEach(() => {
   Portfolio.findOne = originalFindOne;
   Portfolio.findOneAndUpdate = originalFindOneAndUpdate;
   Message.create = originalCreate;
+  resetMailerForTesting();
+  restoreMailEnv();
 });
 
 test("GET /api/health reports disconnected when MongoDB is unavailable", async () => {
@@ -208,7 +235,7 @@ test("POST /api/messages validates email format", async () => {
   assert.equal(response.body.message, "Please enter a valid email address.");
 });
 
-test("POST /api/messages returns a helpful error when MongoDB is not connected", async () => {
+test("POST /api/messages returns a helpful error when MongoDB and email delivery are unavailable", async () => {
   const response = await request(app).post("/api/messages").send({
     name: "Prabanjan",
     email: "prabanjan@example.com",
@@ -237,9 +264,42 @@ test("POST /api/messages saves a normalized message when MongoDB is connected", 
   });
 
   assert.equal(response.status, 201);
+  assert.equal(response.body.emailDelivered, false);
+  assert.equal(response.body.storedInDatabase, true);
   assert.equal(response.body.data.name, "Prabanjan");
   assert.equal(response.body.data.email, "prabanjan@example.com");
   assert.equal(response.body.data.company, "ElectroThrive");
   assert.equal(response.body.data.budget, "2500");
   assert.equal(response.body.data.message, "Build my portfolio please.");
+  assert.match(response.body.warning, /email forwarding/i);
+});
+
+test("POST /api/messages emails the portfolio inbox even when MongoDB is disconnected", async () => {
+  let capturedMail;
+
+  process.env.CONTACT_INBOX = "prabanjan.offical@gmail.com";
+  setTransportFactoryForTesting(() => ({
+    sendMail: async (payload) => {
+      capturedMail = payload;
+      return {
+        messageId: "mail_123"
+      };
+    }
+  }));
+
+  const response = await request(app).post("/api/messages").send({
+    name: "Prabanjan",
+    email: "prabanjan@example.com",
+    company: "ElectroThrive",
+    budget: "2500",
+    message: "Please contact me about a frontend role."
+  });
+
+  assert.equal(response.status, 201);
+  assert.equal(response.body.emailDelivered, true);
+  assert.equal(response.body.storedInDatabase, false);
+  assert.equal(capturedMail.to, "prabanjan.offical@gmail.com");
+  assert.equal(capturedMail.replyTo, "prabanjan@example.com");
+  assert.match(capturedMail.subject, /Prabanjan/);
+  assert.match(capturedMail.text, /frontend role/i);
 });
