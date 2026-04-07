@@ -447,7 +447,7 @@ function App() {
           <SectionHeading
             eyebrow="Projects"
             title="A complete project gallery built around the work I have actually shipped."
-            description="Every project stays visible here in its original portfolio order, so nothing is hidden behind filters or sorting controls."
+            description="Every project stays visible here in its original portfolio."
           />
 
           <article className="panel project-gallery-intro" data-reveal>
@@ -456,8 +456,7 @@ function App() {
               <h3>Every build is shown in one place.</h3>
             </div>
             <p>
-              From MERN apps to event websites and API-based tools, this section now shows the full set of
-              projects without filter bugs, hidden cards, or sorting changes.
+              This MERN project delivers a seamless full-stack experience, showcasing dynamic applications—from event platforms to API-driven tools—with reliable data handling, consistent rendering, and smooth user interactions.
             </p>
             <strong>{projectList.length || 0} projects showcased</strong>
           </article>
