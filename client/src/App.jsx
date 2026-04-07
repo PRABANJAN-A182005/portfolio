@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePortfolio } from "./hooks/usePortfolio";
 import profileImage from "./assets/prabanjan-profile.jpeg";
+import resumeFile from "./assets/prabanjan-a-resume.pdf";
 
 const fallbackPortfolio = {
   hero: {
@@ -156,6 +157,8 @@ const navLinks = [
   { label: "Contact", href: "#contact" }
 ];
 
+const resumeDownloadName = "Prabanjan-A-Resume.pdf";
+
 function normalizeDisplayArray(value) {
   if (Array.isArray(value)) {
     return value.map((item) => String(item).trim()).filter(Boolean);
@@ -309,6 +312,15 @@ function App() {
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">
                 {portfolio.hero?.ctaPrimary || "View Projects"}
+              </a>
+              <a
+                className="button button-secondary"
+                href={resumeFile}
+                download={resumeDownloadName}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Download Resume
               </a>
               <a className="button button-secondary" href="#contact">
                 {portfolio.hero?.ctaSecondary || "Contact Me"}
@@ -558,6 +570,9 @@ function App() {
                 <a href={`mailto:${portfolio.contact?.email}`}>{portfolio.contact?.email}</a>
                 <a href={`tel:${portfolio.contact?.phone}`}>{portfolio.contact?.phone}</a>
                 <span>{portfolio.contact?.location}</span>
+                <a href={resumeFile} download={resumeDownloadName} target="_blank" rel="noreferrer">
+                  Download Resume PDF
+                </a>
                 <a href={portfolio.contact?.calendly} target="_blank" rel="noreferrer">
                   {contactLinkLabel}
                 </a>
