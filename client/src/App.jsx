@@ -24,7 +24,7 @@ const fallbackPortfolio = {
     { label: "Email", url: "mailto:prabanjan.offical@gmail.com" }
   ],
   stats: [
-    { value: "4", label: "Projects Featured" },
+    { value: "5", label: "Projects Showcased" },
     { value: "8.44", label: "Current CGPA" },
     { value: "2026", label: "Graduation Year" }
   ],
@@ -76,7 +76,12 @@ const fallbackPortfolio = {
         "Attendance management system with secure authentication, role-based access, and dashboard tracking for employees and managers.",
       stack: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "Material UI"],
       metrics: ["Secure authentication", "Role-based access", "Dashboard tracking"],
-      links: [],
+      links: [
+        {
+          label: "Live Link",
+          url: "https://attendance-management-prabanjan.netlify.app"
+        }
+      ],
       featured: true
     },
     {
@@ -87,7 +92,12 @@ const fallbackPortfolio = {
         "Official college symposium website built to showcase events, schedules, and registration information through a responsive interface.",
       stack: ["HTML", "CSS", "JavaScript", "Tailwind CSS"],
       metrics: ["Responsive event pages", "Schedule visibility", "Registration flow"],
-      links: [],
+      links: [
+        {
+          label: "Live Link",
+          url: "https://electrothrive.netlify.app"
+        }
+      ],
       featured: false
     },
     {
@@ -99,6 +109,30 @@ const fallbackPortfolio = {
       metrics: ["OMDb API integration", "Local favorites storage", "Fast Vite workflow"],
       links: [],
       featured: false
+    },
+    {
+      title: "AI Code Reviewer",
+      type: "AI Web App",
+      year: "2026",
+      summary:
+        "AI code reviewer application with a Monaco Editor workspace, Hugging Face powered inline feedback, and a full-stack review flow backed by Express and MongoDB Atlas.",
+      stack: [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Monaco Editor",
+        "Node.js",
+        "Express",
+        "MongoDB Atlas"
+      ],
+      metrics: ["Monaco Editor workspace", "Hugging Face inline feedback", "MongoDB Atlas-backed reviews"],
+      links: [
+        {
+          label: "Live Link",
+          url: "https://graceful-piroshki-bd791d.netlify.app"
+        }
+      ],
+      featured: true
     }
   ],
   experience: [
